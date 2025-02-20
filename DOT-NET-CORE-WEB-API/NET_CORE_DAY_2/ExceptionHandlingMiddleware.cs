@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Http;
 
 namespace NET_CORE_DAY_2
 {
-    // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
     public class ExceptionHandlingMiddleware
     {
         private readonly RequestDelegate _next;
