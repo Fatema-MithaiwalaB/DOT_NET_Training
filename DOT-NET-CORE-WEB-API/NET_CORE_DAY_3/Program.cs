@@ -5,6 +5,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<IFileService,FileService>();
+
+builder.Services.AddSingleton<IGuidServices, GuildServices>(); //singleton
+builder.Services.AddTransient<IGuidServices, GuildServices>(); //transient
+builder.Services.AddScoped<IGuidServices, GuildServices>(); //scoped
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
