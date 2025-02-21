@@ -6,9 +6,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddScoped<IFileService,FileService>();
 
-builder.Services.AddSingleton<IGuidServices, GuildServices>(); //singleton
-builder.Services.AddTransient<IGuidServices, GuildServices>(); //transient
-builder.Services.AddScoped<IGuidServices, GuildServices>(); //scoped
+var key_s = builder.Services.AddSingleton<IGuidServicesSingleton, GuildServices>(); //singleton
+var key_t = builder.Services.AddTransient<IGuidServicesTransient, GuildServices>(); //transient
+var key_sc = builder.Services.AddScoped<IGuidServicesScoped, GuildServices>(); //scoped
+
+Console.WriteLine($"Singleton: {key_s} \nTransient: {key_t} \nScoped: {key_sc}");
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -37,6 +39,15 @@ builder.Services.AddCors(option =>
 
 
 var app = builder.Build();
+
+app.MapGet("/Guid", (IGuidServicesSingleton idSingleton,
+                    IGuidServicesScoped idScoped1, IGuidServicesScoped idScoped2,
+                    IGuidServicesTransient idTransient1, IGuidServicesTransient idTransient2) =>
+{
+    return $"Singleton instance: {idSingleton.Value}\r\n\r\n" +
+        $"Scoped instance 1: {idScoped1.Value}\r\nScoped instance 2: {idScoped2.Value}\r\n\r\n" +
+        $"Transient instance 1: {idTransient1.Value}\r\nTransient instance 2: {idTransient2.Value}";
+});
 
 //Custom middleware
 app.Use(async (context, next) =>

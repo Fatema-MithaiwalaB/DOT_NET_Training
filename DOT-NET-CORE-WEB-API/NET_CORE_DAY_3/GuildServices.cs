@@ -1,16 +1,7 @@
 ﻿namespace NET_CORE_DAY_3
 {
-    public class GuildServices:IGuidServices
+    public class GuildServices:IGuidServicesSingleton, IGuidServicesTransient,IGuidServicesScoped
     {
-        private readonly string _guid;
-        public GuildServices()
-        {
-            _guid = Guid.NewGuid().ToString();
-        }
-
-        public string getGuid() 
-        {
-            return _guid;
-        }
+       public Guid Value { get; private set; } = Guid.NewGuid();
     }
 }
