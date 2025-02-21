@@ -1,0 +1,6 @@
+@NET_CORE_DAY_4_HostAddress = http://localhost:5023
+
+GET {{NET_CORE_DAY_4_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
