@@ -1,5 +1,5 @@
 using NET_CORE_DAY_2;
-using NET_CORE_DAY_3;
+using NET_CORE_DAY_3.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

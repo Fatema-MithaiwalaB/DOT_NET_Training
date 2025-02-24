@@ -1,6 +1,6 @@
-﻿namespace NET_CORE_DAY_3
+﻿namespace NET_CORE_DAY_3.Services
 {
-    public class FileService:IFileService
+    public class FileService : IFileService
     {
         private readonly string _directoryPath;
         public FileService()
@@ -10,7 +10,7 @@
             {
                 Directory.CreateDirectory(_directoryPath);
             }
-        } 
+        }
 
         public void SaveToFile(string filename, string content)
         {
@@ -23,7 +23,7 @@
             string filePath = Path.Combine(_directoryPath, filename);
             if (!File.Exists(filePath))
             {
-                return $"{filename} not found!";            
+                return $"{filename} not found!";
             }
             return File.ReadAllText(filePath);
         }

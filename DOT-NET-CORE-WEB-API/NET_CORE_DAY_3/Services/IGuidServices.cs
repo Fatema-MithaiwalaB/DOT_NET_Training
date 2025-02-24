@@ -1,4 +1,4 @@
-﻿namespace NET_CORE_DAY_3
+﻿namespace NET_CORE_DAY_3.Services
 {
     public interface IGuidServicesSingleton
     {
