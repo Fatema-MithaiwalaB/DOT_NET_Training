@@ -10,10 +10,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//builder.Services.AddDbContext<AppDbContext>(options =>
-//{
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-//});
+var environment = builder.Environment.EnvironmentName;
+
+var connectionString = builder.Configuration.GetConnectionString(environment)
+                       ?? builder.Configuration.GetConnectionString("DefaultConnection");
+
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(connectionString));
+
 
 var app = builder.Build();
 
