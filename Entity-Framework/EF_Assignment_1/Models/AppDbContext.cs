@@ -5,6 +5,8 @@ namespace EF_Assignment_1.Models
 {
     public class AppDbContext : DbContext
     {
+        public DbSet<Student> Students { get; set; }
+
         public DbSet<Course> Courses { get; set; }
 
         // No DI Constructor (Only using OnConfiguring)
