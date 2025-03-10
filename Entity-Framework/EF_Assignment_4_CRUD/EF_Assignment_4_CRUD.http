@@ -1,0 +1,6 @@
+@EF_Assignment_4_CRUD_HostAddress = http://localhost:5095
+
+GET {{EF_Assignment_4_CRUD_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

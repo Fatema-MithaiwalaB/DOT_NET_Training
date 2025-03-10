@@ -40,7 +40,7 @@ namespace EF_Assignment_3.Migrations
 
                     b.HasKey("CustomerId");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("EF_Assignment_3.Models.Order", b =>
@@ -61,7 +61,7 @@ namespace EF_Assignment_3.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("EF_Assignment_3.Models.OrderProduct", b =>
@@ -76,7 +76,7 @@ namespace EF_Assignment_3.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderProducts");
+                    b.ToTable("OrderProducts", (string)null);
                 });
 
             modelBuilder.Entity("EF_Assignment_3.Models.Product", b =>
@@ -96,7 +96,7 @@ namespace EF_Assignment_3.Migrations
 
                     b.HasKey("ProductId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("EF_Assignment_3.Models.Order", b =>
