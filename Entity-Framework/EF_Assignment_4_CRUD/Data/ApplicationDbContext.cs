@@ -51,7 +51,8 @@ namespace EF_Assignment_4_CRUD.Data
             );
 
 
-            //base.OnModelCreating(modelBuilder);
+            //Global filter
+            modelBuilder.Entity<Employee>().HasQueryFilter(e => !e.IsDeleted);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace EF_Assignment_4_CRUD.Controllers
         [HttpGet]
         public async Task<ActionResult> GetAllEmployees() 
         {
-            var employees = await dbContext.Employees.Where(emp => !emp.IsDeleted).ToListAsync();
+            var employees = await dbContext.Employees.ToListAsync();
 
             return Ok(employees);
         }
@@ -59,7 +59,7 @@ namespace EF_Assignment_4_CRUD.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetEmployeeById(int id)
         {
-            var employee = await dbContext.Employees.FirstOrDefaultAsync(e => e.EmployeeId == id && !e.IsDeleted);
+            var employee = await dbContext.Employees.FindAsync(id);
 
             if (employee == null)
             {
@@ -73,7 +73,7 @@ namespace EF_Assignment_4_CRUD.Controllers
         [Route("{id:int}")]
         public async Task<ActionResult> UpdateEmployee(int id, UpdateEmployeeDto updateEmployeeDto)
         {
-            var employee = await dbContext.Employees.FirstOrDefaultAsync(e => e.EmployeeId == id && !e.IsDeleted);
+            var employee = await dbContext.Employees.FindAsync(id);
             if (employee == null)
             {
                 return NotFound();
@@ -107,11 +107,10 @@ namespace EF_Assignment_4_CRUD.Controllers
         //}
 
         //Soft Delete
-        [HttpPut]
+        [HttpDelete]
         public async Task<ActionResult> DeleteEmployee(int id)
         {
-            var employee = await dbContext.Employees.FirstOrDefaultAsync(e => e.
-            EmployeeId == id && !e.IsDeleted);
+            var employee = await dbContext.Employees.FindAsync(id);
 
             if (employee == null)
             {
