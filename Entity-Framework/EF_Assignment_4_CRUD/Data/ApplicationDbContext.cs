@@ -45,8 +45,13 @@ namespace EF_Assignment_4_CRUD.Data
                     }
                 );
 
+            modelBuilder.Entity<Employee>().HasData(
+                new Employee { EmployeeId=10, Name = "Alice Johnson", Email = "alice@example.com", Phone = "9876543210", Salary = 50000.00m },
+                new Employee { EmployeeId=11, Name = "Bob Smith", Email = "bob@example.com", Phone = "9871234567", Salary = 60000.00m }
+            );
 
-            base.OnModelCreating(modelBuilder);
+
+            //base.OnModelCreating(modelBuilder);
         }
     }
 }
